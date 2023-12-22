@@ -19,11 +19,7 @@ python -m venv .venv
 Activate the virtual environment. The activation command may vary based on your operating system:
 
 - **Windows**:
-```bash
-  .venv\Scripts\activate
-```
 
-- **macOS and Linux**:
 ```bash
   source .venv/bin/activate
 ```
