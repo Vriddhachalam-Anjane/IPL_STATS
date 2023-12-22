@@ -10,39 +10,39 @@ To set up and run this dashboard on your local machine, follow the steps below:
 
 First, create a virtual environment in your project directory:
 
-\```bash
+```bash
 python -m venv .venv
-\```
+```
 
 ### 2. Activate the Virtual Environment
 
 Activate the virtual environment. The activation command may vary based on your operating system:
 
 - **Windows**:
-  \```bash
+```bash
   .venv\Scripts\activate
-  \```
+```
 
 - **macOS and Linux**:
-  \```bash
+```bash
   source .venv/bin/activate
-  \```
+```
 
 ### 3. Install Required Dependencies
 
 With the virtual environment activated, install the required Python packages by running:
 
-\```bash
+```bash
 pip install -r requirements.txt
-\```
+```
 
 ### 4. Run the Main Application
 
 Once the dependencies are installed, execute the `main.py` file to start the application:
 
-\```bash
+```bash
 python main.py
-\```
+```
 
 ### 5. Access the Dashboard
 
