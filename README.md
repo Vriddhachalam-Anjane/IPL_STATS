@@ -45,3 +45,9 @@ python main.py
 After running the application, open your web browser and navigate to the following URL to access the IPL 2023 Statistics Dashboard:
 
 [http://localhost:8888/template_2023](http://localhost:8888/template_2023)
+
+
+### 6. Purpose
+
+An entry level data project for data analtics using duckdb and pandas, Feel free to explore via Jupyter Notebook file (.ipynb)
+
