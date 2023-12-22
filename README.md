@@ -49,5 +49,5 @@ After running the application, open your web browser and navigate to the followi
 
 ### 6. Purpose
 
-An entry level data project for data analtics using duckdb and pandas, Feel free to explore via Jupyter Notebook file (.ipynb)
+An entry level data project for data analtics using duckdb and pandas, Feel free to explore the data loading in **main.py** and transfomations done in **flattener.py** , **stats_2023.py** and **stats_2023.ipynb** 
 
