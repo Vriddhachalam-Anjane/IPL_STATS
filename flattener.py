@@ -1,6 +1,6 @@
 import duckdb
 
-def go():
+def flatten():
 
     match_inning_over_by_ball_query='''
     with matches as (
@@ -357,21 +357,29 @@ def go():
         '''
 
     with duckdb.connect("ipl_cric.duckdb") as conn:
-        conn.execute(''' CREATE OR REPLACE TABLE all_ipl_data AS
-                        SELECT *  
-                        FROM read_json('ipl_json/*.json',
-                        --json_format = 'records',
-                        records = true,
-                        format='auto',                    
-                        ignore_errors = false,
-                        columns = {"meta":'JSON', "info": 'JSON', "innings": 'JSON'});
-        ''')
 
 
-        print("json files loaded to database 'ipl_cric.duckdb'")
+        if conn.sql("SELECT name FROM sqlite_master WHERE type='table' AND name='all_ipl_data';"):
+            print("\njson files already loaded to database 'ipl_cric.duckdb'")
 
-        print("creating duckdb connection to 'ipl_cric.duckdb'")
-        print("flattening to ball_by_ball row format .......")
-        conn.sql(f"  create or replace table ball_by_ball_ipl as ({match_inning_over_by_ball_query}) ;")
-        print('json files flattened to ball_by_ball row format table')
-        print('duckdb connection closed')
+        else:
+            conn.execute(''' CREATE OR REPLACE TABLE all_ipl_data AS
+                            SELECT *  
+                            FROM read_json('ipl_json/*.json',
+                            --json_format = 'records',
+                            records = true,
+                            format='auto',                    
+                            ignore_errors = false,
+                            columns = {"meta":'JSON', "info": 'JSON', "innings": 'JSON'});
+            ''')
+
+            print("\njson files loaded to database 'ipl_cric.duckdb'")
+            print("\ncreating duckdb connection to 'ipl_cric.duckdb'")
+            print("\nflattening to ball_by_ball row format .......")
+
+        if conn.sql("SELECT name FROM sqlite_master WHERE type='table' AND name='ball_by_ball_ipl';"):
+            print('\njson files already flattened to ball_by_ball row format table')
+        else:            
+            conn.sql(f"  create or replace table ball_by_ball_ipl as ({match_inning_over_by_ball_query}) ;")
+            print('\njson files flattened to ball_by_ball row format table')
+

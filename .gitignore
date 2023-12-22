@@ -1,2 +1,7 @@
 .venv
 _pycache_
+source
+*.duckdb
+*duckdb.wal
+*.zip
+ipl_json
