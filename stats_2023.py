@@ -13,10 +13,17 @@ def charts():
     import plotly.express as px
     import os
 
-# for file_name in files_in_folder:
-#     file_path = os.path.join(folder_path, file_name)
-    file_path= os.getcwd()+'template_2023'+'source/'
-    if os.path.exists(file_path):
+    file_path= os.getcwd()+'\\template_2023\\'+'source\\'
+
+    print(file_path)
+
+
+    if not os.path.exists(file_path):
+        os.mkdir(file_path)
+
+    contains_html_file = any(filename.endswith('.html') for filename in os.listdir(file_path))
+
+    if not contains_html_file:
 
         print("\n Generataing plots....")
         # %%
